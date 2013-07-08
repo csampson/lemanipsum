@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='description' content='' />
+  <title></title>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <%= css :app %>
+  <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
+</head>
+<body>
+  <header>
+    <h1>Leman Ipsum</h1>
+    <p>Warhammer 40k lorem ipsum generator</p>
+  </header>
+
+  <textarea rows='12'>
+Fusce a metus eu diam varius congue nec nec sapien. Vestibulum orci tortor, sollicitudin ac euismod non, placerat ac augue. Nunc convallis accumsan justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+
+Fusce a metus eu diam varius congue nec nec sapien. Vestibulum orci tortor, sollicitudin ac euismod non, placerat ac augue. Nunc convallis accumsan justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+
+
+Fusce a metus eu diam varius congue nec nec sapien. Vestibulum orci tortor, sollicitudin ac euismod non, placerat ac augue. Nunc convallis accumsan justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</textarea>
+
+  <div class='generator-controls'>
+    <label class='output-size'>
+      Number of paragraphs
+      <input type='number' value='3' />
+    </label>
+
+    <label class='output-format'>
+      Output
+      <select>
+        <option>Plain</option>
+        <option>Paragraphs</option>
+        <option>List</option>
+      </select>
+    </label>
+
+    <button class='randomize-output' type='button'>Randomize</button>
+  </div>
+
+  <%= js :app %>
+</body>
+</html>

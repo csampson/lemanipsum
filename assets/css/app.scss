@@ -1,0 +1,99 @@
+@import 'bourbon/bourbon';
+
+$grimblue: #1A1A1C;
+
+%input {
+  border: 1px solid #444;
+  background: $grimblue;
+  color: inherit;
+  padding: 0.25em;
+}
+
+@include font-face(CaslonAntique, '/fonts/CaslonAntique');
+
+body {
+  background: #0A0B06;
+  color: #F4F4F4;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 90%;
+  width: 60em;
+  margin: 3em auto 0;
+}
+
+a, button {
+  cursor: pointer;
+}
+
+input, select, button {
+  font: inherit;
+}
+
+header {
+  font-family: 'CaslonAntique', serif;
+
+  h1 {
+    line-height: 1;
+    margin-bottom: 0;
+  }
+
+  p {
+    font-size: 125%;
+    margin-top: 1ex;
+  }
+}
+
+header::before {
+  content: '';
+  background: url('/images/aquila.png') no-repeat;
+  width: 150px;
+  height: 60px;
+  float: right;
+}
+
+textarea {
+  @include box-sizing(border-box);
+  outline: 1px solid #111;
+  border: 1px solid #000;
+  background: $grimblue;
+  color: inherit;
+  width: 100%;
+  margin: 1em 0;
+}
+
+.generator-controls {
+  list-style: none;
+  font-size: 85%;
+  padding: 0;
+}
+
+.output-size, .output-format {
+  float: left;
+}
+
+.output-format {
+  margin-left: 1em;
+  white-space: nowrap;
+
+  &::before {
+    content: '';
+    border-left: 1px solid #000;
+    border-right: 1px solid #111;
+    height: 1em;
+    margin-right: 1ex;
+  }
+}
+
+.output-size input, .output-format select {
+  @extend %input;
+}
+
+.output-size input {
+  width: 3em;
+}
+
+.randomize-output {
+  @extend %input;
+  padding-left: 2em;
+  padding-right: 2em;
+  float: right;
+}
