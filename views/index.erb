@@ -2,10 +2,11 @@
 <html lang='en-US'>
 <head>
   <meta charset='utf-8' />
-  <meta name='description' content='' />
-  <title></title>
+  <meta name='description' content='Warhammer 40k lorem ipsum generator' />
+  <title>Leman Ipsum</title>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= css :app %>
+  <link href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' rel='stylesheet' />
   <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
 </head>
 <body>
@@ -26,16 +27,17 @@ Fusce a metus eu diam varius congue nec nec sapien. Vestibulum orci tortor, soll
   <div class='generator-controls'>
     <label class='output-size'>
       Number of paragraphs
-      <input type='number' value='3' />
+      <input type='number' min='1' value='3' />
     </label>
 
     <label class='output-format'>
-      Output
-      <select>
-        <option>Plain</option>
-        <option>Paragraphs</option>
-        <option>List</option>
-      </select>
+      Format
+      <span>
+        <select name='output-format'>
+          <option value='plain-text'>Plain text</option>
+          <option value='html'>HTML</option>
+        </select>
+      </span>
     </label>
 
     <button class='randomize-output' type='button'>Randomize</button>

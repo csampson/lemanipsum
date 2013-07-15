@@ -1,21 +1,35 @@
 @import 'bourbon/bourbon';
 
-$grimblue: #1A1A1C;
+$grim: #1E1E20;
+$dark: #1A1A1C;
 
 %input {
-  border: 1px solid #444;
-  background: $grimblue;
+  border-radius: 0;
+  border: 1px solid #111;
+  background: $grim;
+  font: inherit;
   color: inherit;
-  padding: 0.25em;
+  padding: 0.675em;
+}
+
+%button {
+  box-shadow: 0 1px 1px #333 inset;
+  @include linear-gradient(#262629, #1C1C1C);
+  border: 1px solid #111;
+  border-bottom-color: #000;
+  text-shadow: 0 -1px 1px #000;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 @include font-face(CaslonAntique, '/fonts/CaslonAntique');
 
 body {
-  background: #0A0B06;
+  background: #171719;
   color: #F4F4F4;
+  text-shadow: 0 1px #000;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 90%;
+  font-size: 85%;
   width: 60em;
   margin: 3em auto 0;
 }
@@ -37,7 +51,7 @@ header {
   }
 
   p {
-    font-size: 125%;
+    font-size: 135%;
     margin-top: 1ex;
   }
 }
@@ -51,11 +65,9 @@ header::before {
 }
 
 textarea {
+  @extend %input;
   @include box-sizing(border-box);
-  outline: 1px solid #111;
-  border: 1px solid #000;
-  background: $grimblue;
-  color: inherit;
+  outline: 1px solid $dark;
   width: 100%;
   margin: 1em 0;
 }
@@ -66,24 +78,24 @@ textarea {
   padding: 0;
 }
 
-.output-size, .output-format {
-  float: left;
-}
-
 .output-format {
   margin-left: 1em;
-  white-space: nowrap;
 
-  &::before {
-    content: '';
-    border-left: 1px solid #000;
-    border-right: 1px solid #111;
-    height: 1em;
-    margin-right: 1ex;
+  input {
+    margin: 0;
+    vertical-align: middle;
   }
 }
 
-.output-size input, .output-format select {
+.output-size::after {
+  content: '';
+  border-left: 1px solid #000;
+  border-right: 1px solid $dark;
+  height: 1em;
+  margin-left: 1em;
+}
+
+.output-size input, .output-format select, .randomize-output {
   @extend %input;
 }
 
@@ -91,9 +103,37 @@ textarea {
   width: 3em;
 }
 
+.output-format {
+  span {
+    @extend %button;
+    padding: 0;
+    margin-left: 1ex;
+    display: inline-block;
+    position: relative;
+  }
+
+  span::after {
+    content: '\25BE';
+    margin-top: -0.75em;
+    position: absolute;
+    right: 1ex;
+    top: 50%;
+  }
+
+  select {
+    @include appearance(none);
+    border: none;
+    background: none;
+    padding: 0.75em 2em 0.75em 0.75em;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+
+    option { background: $grim; }
+  }
+}
+
 .randomize-output {
-  @extend %input;
-  padding-left: 2em;
-  padding-right: 2em;
+  @extend %button;
   float: right;
 }
