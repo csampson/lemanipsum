@@ -6,41 +6,35 @@
   <title>Leman Ipsum</title>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= css :app %>
-  <link href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css' rel='stylesheet' />
-  <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
+  <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'></script>
 </head>
-<body>
+<body ng-app='LemanIpsum'>
   <header>
     <h1>Leman Ipsum</h1>
     <p>Warhammer 40k lorem ipsum generator</p>
   </header>
 
-  <textarea rows='12'>
-Fusce a metus eu diam varius congue nec nec sapien. Vestibulum orci tortor, sollicitudin ac euismod non, placerat ac augue. Nunc convallis accumsan justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+  <div ng-controller='Generator'>
+    <textarea rows='12'>{{selection}}</textarea>
 
+    <div class='generator-controls'>
+      <label class='output-size'>
+        Number of paragraphs
+        <input ng-model='outputSize' ng-change='updateSelection()' type='number' min='1' />
+      </label>
 
-Fusce a metus eu diam varius congue nec nec sapien. Vestibulum orci tortor, sollicitudin ac euismod non, placerat ac augue. Nunc convallis accumsan justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+      <label class='output-format'>
+        Format
+        <span>
+          <select ng-model='outputFormat' ng-change='updateSelection()' name='output-format'>
+            <option value='plain-text'>Plain text</option>
+            <option value='html'>HTML</option>
+          </select>
+        </span>
+      </label>
 
-
-Fusce a metus eu diam varius congue nec nec sapien. Vestibulum orci tortor, sollicitudin ac euismod non, placerat ac augue. Nunc convallis accumsan justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</textarea>
-
-  <div class='generator-controls'>
-    <label class='output-size'>
-      Number of paragraphs
-      <input type='number' min='1' value='3' />
-    </label>
-
-    <label class='output-format'>
-      Format
-      <span>
-        <select name='output-format'>
-          <option value='plain-text'>Plain text</option>
-          <option value='html'>HTML</option>
-        </select>
-      </span>
-    </label>
-
-    <button class='randomize-output' type='button'>Randomize</button>
+      <button class='randomize-output' type='button'>Randomize</button>
+    </div>
   </div>
 
   <%= js :app %>
