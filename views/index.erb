@@ -7,6 +7,7 @@
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= css :app %>
   <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js'></script>
 </head>
 <body ng-app='LemanIpsum'>
   <header>
@@ -15,25 +16,25 @@
   </header>
 
   <div ng-controller='Generator'>
-    <textarea rows='12'>{{selection}}</textarea>
+    <textarea rows='12'>{{getSelection()}}</textarea>
 
     <div class='generator-controls'>
       <label class='output-size'>
         Number of paragraphs
-        <input ng-model='outputSize' ng-change='updateSelection()' type='number' min='1' max='{{paragraphs.length}}' />
+        <input ng-model='outputSize' type='number' min='1' max='{{paragraphs.length}}' />
       </label>
 
       <label class='output-format'>
         Format
         <span>
-          <select ng-model='outputFormat' ng-change='updateSelection()' name='output-format'>
+          <select ng-model='outputFormat' name='output-format'>
             <option value='text'>Plain text</option>
             <option value='html'>HTML</option>
           </select>
         </span>
       </label>
 
-      <button class='randomize-output' type='button'>Randomize</button>
+      <button class='randomize-output' type='button' ng-click='randomizeSelection()'>Randomize</button>
     </div>
   </div>
 
