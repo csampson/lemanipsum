@@ -1,9 +1,8 @@
 window.app = angular.module('LemanIpsum', []);
 
-app.controller('Generator', function($scope) {
-  $scope.paragraphs = ['whoooooaaaa', 'fefefe', 'wwwww', 'bbrrrr', 'fafafjiejfoifoer', 'efojeifer'];
+app.controller('Generator', function($scope, $http) {
   $scope.outputSize = 3;
-  $scope.outputFormat = 'plain-text';
+  $scope.outputFormat = 'text';
 
   $scope.updateSelection = function() {
     var selection = $scope.paragraphs.slice(0, $scope.outputSize);
@@ -14,5 +13,8 @@ app.controller('Generator', function($scope) {
     $scope.selection = selection.join('\n\n');
   };
 
-  $scope.updateSelection();
+  $http.get('/proverbs').success(function(response) {
+    $scope.paragraphs = response;
+    $scope.updateSelection();
+  });
 });

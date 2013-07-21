@@ -20,14 +20,14 @@
     <div class='generator-controls'>
       <label class='output-size'>
         Number of paragraphs
-        <input ng-model='outputSize' ng-change='updateSelection()' type='number' min='1' />
+        <input ng-model='outputSize' ng-change='updateSelection()' type='number' min='1' max='{{paragraphs.length}}' />
       </label>
 
       <label class='output-format'>
         Format
         <span>
           <select ng-model='outputFormat' ng-change='updateSelection()' name='output-format'>
-            <option value='plain-text'>Plain text</option>
+            <option value='text'>Plain text</option>
             <option value='html'>HTML</option>
           </select>
         </span>

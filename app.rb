@@ -19,7 +19,14 @@ class App < Sinatra::Base
 
   set :scss, { :load_paths => [ "#{App.root}/assets/css" ] }
 
+  proverbs = JSON.parse(File.read('proverbs.json'), :symbolize_names => true)
+
   get '/' do
     erb :index
+  end
+
+  get '/proverbs' do
+    content_type :json
+    proverbs.to_json
   end
 end
