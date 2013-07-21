@@ -14,12 +14,42 @@ $dark: #1A1A1C;
 
 %button {
   box-shadow: 0 1px 1px #333 inset;
-  @include linear-gradient(#262629, #1C1C1C);
   border: 1px solid #111;
   border-bottom-color: #000;
+  @include linear-gradient(#262629, #1C1C1C);
+  color: inherit;
   text-shadow: 0 -1px 1px #000;
-  padding-left: 2em;
-  padding-right: 2em;
+  padding: 0.675em 2em;
+}
+
+%select {
+  span {
+    @extend %button;
+    padding: 0;
+    margin-left: 1ex;
+    display: inline-block;
+    position: relative;
+  }
+
+  span::after {
+    content: '\25BE';
+    margin-top: -0.75em;
+    position: absolute;
+    right: 1ex;
+    top: 50%;
+  }
+
+  select {
+    @include appearance(none);
+    border: none;
+    background: none;
+    padding: 0.75em 2em 0.75em 0.75em;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+
+    option { background: $grim; }
+  }
 }
 
 @include font-face(CaslonAntique, '/fonts/CaslonAntique');
@@ -68,6 +98,7 @@ textarea {
   @extend %input;
   @include box-sizing(border-box);
   outline: 1px solid $dark;
+  font-size: 90%;
   width: 100%;
   margin: 1em 0;
 }
@@ -90,12 +121,12 @@ textarea {
 .output-size::after {
   content: '';
   border-left: 1px solid #000;
-  border-right: 1px solid $dark;
+  border-right: 1px solid #222;
   height: 1em;
   margin-left: 1em;
 }
 
-.output-size input, .output-format select, .randomize-output {
+.output-size input, .output-format select {
   @extend %input;
 }
 
@@ -103,34 +134,9 @@ textarea {
   width: 3em;
 }
 
+
 .output-format {
-  span {
-    @extend %button;
-    padding: 0;
-    margin-left: 1ex;
-    display: inline-block;
-    position: relative;
-  }
-
-  span::after {
-    content: '\25BE';
-    margin-top: -0.75em;
-    position: absolute;
-    right: 1ex;
-    top: 50%;
-  }
-
-  select {
-    @include appearance(none);
-    border: none;
-    background: none;
-    padding: 0.75em 2em 0.75em 0.75em;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-
-    option { background: $grim; }
-  }
+  @extend %select;
 }
 
 .randomize-output {
