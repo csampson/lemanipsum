@@ -16,7 +16,7 @@ app.controller('Generator', function($scope, $http) {
   }
 
   $scope.getSelection = function() {
-    var selection = $scope.paragraphs.slice(0, $scope.outputSize);
+    var selection = $scope.paragraphs.slice(0, $scope.outputSize || 1);
 
     if($scope.outputFormat === 'html')
       selection = selection.map(function(p) { return '<p>'+p+'</p>'; });
@@ -33,4 +33,13 @@ app.controller('Generator', function($scope, $http) {
     $scope.proverbs = response;
     $scope.paragraphs = createParagraphs(response);
   });
+});
+
+$('.skinned-select select').on('change', function() {
+  var text = $(this).find('option:selected').text();
+  $(this).siblings('.skinned-select-value').text(text);
+});
+
+$('textarea').on('click', function() {
+  $(this).select();
 });
