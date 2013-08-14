@@ -1,28 +1,28 @@
 @import 'bourbon/bourbon';
 
-$grim: #1E1E20;
+$grim: #212124;
 $dark: #1A1A1C;
 
 @include font-face(CaslonAntique, '/fonts/CaslonAntique');
 
 %input {
+  outline: 1px solid $dark;
   border-radius: 0;
   border: 1px solid #111;
-  border-bottom: 1px solid #000;
   background: $grim;
   font: inherit;
   color: inherit;
-  padding: 0.675em;
+  padding: 0.75em;
 }
 
 %button {
   box-shadow: 0 1px 1px #333 inset;
   border: 1px solid #111;
   border-bottom-color: #000;
-  @include linear-gradient(#262629, #1C1C1C);
+  @include linear-gradient(#26262A, #222224);
   color: inherit;
   text-shadow: 0 -1px 1px #000;
-  padding: 0.675em 2em;
+  padding: 0.75em 2em;
 }
 
 .skinned-select {
@@ -48,6 +48,7 @@ $dark: #1A1A1C;
   }
 
   select {
+    @include appearance(none);
     opacity: 0;
     padding: 0.75em 2em 0.75em 0.75em;
     margin: 0;
@@ -125,9 +126,11 @@ textarea {
 .output-size::after {
   content: '';
   border-left: 1px solid #000;
-  border-right: 1px solid #222;
-  height: 1em;
+  border-right: 1px solid $dark;
+  height: 1.5em;
   margin-left: 1em;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .output-size input, .output-format select {
