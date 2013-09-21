@@ -40,6 +40,3 @@ $('.skinned-select select').on('change', function() {
   $(this).siblings('.skinned-select-value').text(text);
 });
 
-$('textarea').on('click', function() {
-  $(this).select();
-});
