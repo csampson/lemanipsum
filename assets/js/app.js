@@ -5,7 +5,7 @@ app.controller('Generator', function($scope, $http) {
   $scope.outputSize = 3;
   $scope.outputFormat = 'text';
 
-  function createParagraphs(proverbs) {
+  $scope.createParagraphs = function(proverbs) {
     var paragraphs = [];
 
     for(var i=0, l=proverbs.length; i<l; i++) {
@@ -13,7 +13,7 @@ app.controller('Generator', function($scope, $http) {
     }
 
     return paragraphs;
-  }
+  };
 
   $scope.getSelection = function() {
     var selection = $scope.paragraphs.slice(0, $scope.outputSize || 1);
@@ -26,12 +26,12 @@ app.controller('Generator', function($scope, $http) {
 
   $scope.randomizeSelection = function() {
     var proverbs = _.shuffle($scope.proverbs);
-    $scope.paragraphs = createParagraphs(proverbs);
+    $scope.paragraphs = $scope.createParagraphs(proverbs);
   };
 
   $http.get('/proverbs').success(function(response) {
     $scope.proverbs = response;
-    $scope.paragraphs = createParagraphs(response);
+    $scope.paragraphs = $scope.createParagraphs(response);
   });
 });
 
