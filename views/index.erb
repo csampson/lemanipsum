@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en-US'>
+<html data-ng-app='App' lang='en-US'>
 <head>
   <meta charset='utf-8' />
   <meta name='description' content='Warhammer 40k lorem ipsum generator' />
@@ -7,36 +7,36 @@
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= css :app %>
   <script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
-  <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js'></script>
+  <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js'></script>
   <script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore-min.js'></script>
 </head>
-<body ng-app='LemanIpsum'>
+<body>
   <header>
     <h1>Leman Ipsum</h1>
     <p>Warhammer 40k lorem ipsum generator</p>
   </header>
 
-  <div ng-controller='Generator'>
+  <div data-ng-controller='GeneratorCtrl'>
     <textarea rows='12'>{{getSelection()}}</textarea>
 
     <div class='generator-controls'>
       <label class='output-size'>
         Number of paragraphs
-        <input ng-model='outputSize' type='number' min='1' max='{{paragraphs.length}}' />
+        <input data-ng-model='outputSize' type='number' min='1' />
       </label>
 
       <label class='output-format'>
         Format
         <span class='skinned-select'>
           <span class='skinned-select-value' aria-hidden='true'>Plain text</span>
-          <select ng-model='outputFormat' name='output-format'>
+          <select data-ng-model='outputFormat' name='output-format'>
             <option value='text'>Plain text</option>
             <option value='html'>HTML</option>
           </select>
         </span>
       </label>
 
-      <button class='randomize-output' type='button' ng-click='randomizeSelection()'>Randomize</button>
+      <button class='randomize-output' type='button' data-ng-click='randomizeSelection()'>Randomize</button>
     </div>
   </div>
 

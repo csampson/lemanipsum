@@ -1,39 +1,40 @@
-window.app = angular.module('LemanIpsum', []);
+angular.module('App', ['App.controllers']);
 
-app.controller('Generator', function($scope, $http) {
-  $scope.paragraphs = [];
-  $scope.outputSize = 3;
-  $scope.outputFormat = 'text';
+angular.module('App.controllers', [])
+  .controller('GeneratorCtrl', function($scope, $http) {
+    $scope.paragraphs = [];
+    $scope.outputSize = 3;
+    $scope.outputFormat = 'text';
 
-  $scope.createParagraphs = function(proverbs) {
-    var paragraphs = [];
+    $scope.createParagraphs = function(proverbs) {
+      var paragraphs = [];
 
-    for(var i=0, l=proverbs.length; i<l; i++) {
-      if(i % 8 === 0) paragraphs.push(proverbs.slice(i, i+7).join(' '));
-    }
+      for(var i=0, l=proverbs.length; i<l; i++) {
+        if(i % 8 === 0) paragraphs.push(proverbs.slice(i, i+7).join(' '));
+      }
 
-    return paragraphs;
-  };
+      return paragraphs;
+    };
 
-  $scope.getSelection = function() {
-    var selection = $scope.paragraphs.slice(0, $scope.outputSize || 1);
+    $scope.getSelection = function() {
+      var selection = $scope.paragraphs.slice(0, $scope.outputSize || 1);
 
-    if($scope.outputFormat === 'html')
-      selection = selection.map(function(p) { return '<p>'+p+'</p>'; });
+      if($scope.outputFormat === 'html')
+        selection = selection.map(function(p) { return '<p>'+p+'</p>'; });
 
-    return selection.join('\n\n');
-  };
+      return selection.join('\n\n');
+    };
 
-  $scope.randomizeSelection = function() {
-    var proverbs = _.shuffle($scope.proverbs);
-    $scope.paragraphs = $scope.createParagraphs(proverbs);
-  };
+    $scope.randomizeSelection = function() {
+      var proverbs = _.shuffle($scope.proverbs);
+      $scope.paragraphs = $scope.createParagraphs(proverbs);
+    };
 
-  $http.get('/proverbs').success(function(response) {
-    $scope.proverbs = response;
-    $scope.paragraphs = $scope.createParagraphs(response);
+    $http.get('/proverbs').success(function(response) {
+      $scope.proverbs = response;
+      $scope.paragraphs = $scope.createParagraphs(response);
+    });
   });
-});
 
 $('.skinned-select select').on('change', function() {
   var text = $(this).find('option:selected').text();
