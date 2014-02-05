@@ -1,7 +1,7 @@
-angular.module('App', []);
+angular.module('app', []);
 
-angular.module('App')
-  .controller('GeneratorCtrl', function($scope, $http) {
+angular.module('app')
+  .controller('GeneratorCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.outputSize = 3;
     $scope.outputFormat = 'text';
     $scope.proverbs = [];
@@ -13,9 +13,9 @@ angular.module('App')
     $http.get('/proverbs').success(function(response) {
       $scope.proverbs = response;
     });
-  });
+  }]);
 
-angular.module('App')
+angular.module('app')
   .filter('groupParagraphs', function() {
     return function(items) {
       var paragraphs = [];
