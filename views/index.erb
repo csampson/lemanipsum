@@ -17,7 +17,7 @@
   </header>
 
   <div data-ng-controller='GeneratorCtrl'>
-    <textarea rows='12'>{{getSelection()}}</textarea>
+    <textarea rows='12'>{{proverbs | groupParagraphs | limitTo:outputSize | formatParagraphs:{format:outputFormat} }}</textarea>
 
     <div class='generator-controls'>
       <label class='output-size'>

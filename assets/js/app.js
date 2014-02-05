@@ -1,39 +1,41 @@
-angular.module('App', ['App.controllers']);
+angular.module('App', []);
 
-angular.module('App.controllers', [])
+angular.module('App')
   .controller('GeneratorCtrl', function($scope, $http) {
-    $scope.paragraphs = [];
     $scope.outputSize = 3;
     $scope.outputFormat = 'text';
-
-    $scope.createParagraphs = function(proverbs) {
-      var paragraphs = [];
-
-      for(var i=0, l=proverbs.length; i<l; i++) {
-        if(i % 8 === 0) paragraphs.push(proverbs.slice(i, i+7).join(' '));
-      }
-
-      return paragraphs;
-    };
-
-    $scope.getSelection = function() {
-      var selection = $scope.paragraphs.slice(0, $scope.outputSize || 1);
-
-      if($scope.outputFormat === 'html')
-        selection = selection.map(function(p) { return '<p>'+p+'</p>'; });
-
-      return selection.join('\n\n');
-    };
+    $scope.proverbs = [];
 
     $scope.randomizeSelection = function() {
-      var proverbs = _.shuffle($scope.proverbs);
-      $scope.paragraphs = $scope.createParagraphs(proverbs);
+      $scope.proverbs = _.shuffle($scope.proverbs);
     };
 
     $http.get('/proverbs').success(function(response) {
       $scope.proverbs = response;
-      $scope.paragraphs = $scope.createParagraphs(response);
     });
+  });
+
+angular.module('App')
+  .filter('groupParagraphs', function() {
+    return function(items) {
+      var paragraphs = [];
+
+      for(var i=0, l=items.length; i<l; i++) {
+        if(i % 8 === 0) paragraphs.push(items.slice(i, i+7).join(' '));
+      }
+
+      return paragraphs;
+    };
+  })
+  .filter('formatParagraphs', function() {
+    return function(items, options) {
+      var paragraphs = items;
+
+      if(options.format === 'html')
+        paragraphs = paragraphs.map(function(p) { return '<p>'+p+'</p>'; });
+
+      return paragraphs.join('\n\n');
+    }
   });
 
 $('.skinned-select select').on('change', function() {
