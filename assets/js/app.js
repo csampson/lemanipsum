@@ -51,11 +51,12 @@ angular.module('app')
           return element.find('option:selected').text();
         }
 
-        scope.selection = getSelection();
-
         element.find('select').on('change', function() {
           scope.selection = getSelection();
+          scope.$apply();
         });
+
+        scope.selection = getSelection();
       }
     };
   });
