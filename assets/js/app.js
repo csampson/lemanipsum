@@ -12,9 +12,13 @@ angular.module('app')
       $scope.proverbs = _.shuffle($scope.proverbs);
     };
 
-    $http.get('/proverbs').success(function(response) {
-      $scope.proverbs = response;
-    });
+    $scope.loadProverbs = function() {
+      $http.get('/proverbs').success(function(response) {
+        $scope.proverbs = response;
+      });
+    };
+
+    $scope.loadProverbs();
   }]);
 
 angular.module('app')
