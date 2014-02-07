@@ -6,13 +6,13 @@ class App < Sinatra::Base
 	register Sinatra::AssetPack
 
   assets {
-    serve '/css', {:from => 'assets/css'}
-    serve '/js', {:from => 'assets/js'}
+    serve '/css',    {:from => 'assets/css'}
+    serve '/js',     {:from => 'assets/js'}
     serve '/images', {:from => 'assets/images'}
-    serve '/fonts', {:from => 'assets/fonts'}
+    serve '/fonts',  {:from => 'assets/fonts'}
 
     css :app, ['css/app.css']
-    js :app, ['js/app.js']
+    js  :app, ['js/app.js']
   }
 
   set :scss, { :load_paths => [ "#{App.root}/assets/css" ] }

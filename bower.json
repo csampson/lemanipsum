@@ -1,0 +1,17 @@
+{
+  "name": "lemanipsum",
+  "version": "1.0.0",
+  "homepage": "https://github.com/csampson/lemanipsum",
+  "authors": [
+    "Cameron Sampson <vaerros@gmail.com>"
+  ],
+  "description": "Warhammer 40k lorem ipsum generator",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.11",
+    "html5shiv": "3.7.0",
+    "jquery": "1.10.2",
+    "lodash": "2.4.1"
+  }
+}

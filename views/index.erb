@@ -4,11 +4,18 @@
   <meta charset='utf-8' />
   <meta name='description' content='Warhammer 40k lorem ipsum generator' />
   <title>Leman Ipsum</title>
-  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   <%= css :app %>
-  <script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
-  <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js'></script>
-  <script src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js'></script>
+  <% if App.production? %>
+    <!--[if lt IE 9]><script src="//cdn.jsdelivr.net/html5shiv/3.7.0/html5shiv.js"></script><![endif]-->
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.11/angular.min.js'></script>
+    <script src='//cdn.jsdelivr.net/lodash/2.4.1/lodash.min.js'></script>
+  <% else %>
+    <!--[if lt IE 9]><script src="/js/vendor/html5shiv.js"></script><![endif]-->
+    <script src='/js/vendor/jquery/jquery.min.js'></script>
+    <script src='/js/vendor/angular/angular.min.js'></script>
+    <script src='/js/vendor/lodash/dist/lodash.min.js'></script>
+  <% end %>
 </head>
 <body>
   <header>
