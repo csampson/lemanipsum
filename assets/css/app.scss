@@ -31,20 +31,21 @@ $dark: #1A1A1C;
   display: inline-block;
   position: relative;
 
-  &::after, .skinned-select-value {
+  &::before, &::after {
     line-height: 1;
     margin-top: -0.5em;
     position: absolute;
     top: 50%;
   }
 
+  &::before {
+    content: attr(data-selection);
+    left: 1ex;
+  }
+
   &::after {
     content: '\25BE';
     right: 1ex;
-  }
-
-  .skinned-select-value {
-    left: 1ex;
   }
 
   select {

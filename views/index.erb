@@ -17,19 +17,19 @@
   </header>
 
   <div data-ng-controller='GeneratorCtrl'>
-    <textarea rows='12'>{{proverbs | groupParagraphs | limitTo:outputSize | formatParagraphs:{format:outputFormat} }}</textarea>
+    <textarea rows='12'>{{proverbs | groupParagraphs | limitTo:options.outputSize | formatParagraphs:{format:options.outputFormat} }}</textarea>
 
     <div class='generator-controls'>
       <label class='output-size'>
         Number of paragraphs
-        <input data-ng-model='outputSize' type='number' min='1' />
+        <input data-ng-model='options.outputSize' type='number' min='1' />
       </label>
 
       <label class='output-format'>
         Format
-        <span class='skinned-select'>
-          <span class='skinned-select-value' aria-hidden='true'>Plain text</span>
-          <select data-ng-model='outputFormat' name='output-format'>
+
+        <span class='skinned-select' data-skinned-select>
+          <select data-ng-model='options.outputFormat'>
             <option value='text'>Plain text</option>
             <option value='html'>HTML</option>
           </select>

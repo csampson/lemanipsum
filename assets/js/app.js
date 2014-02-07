@@ -2,8 +2,10 @@ angular.module('app', []);
 
 angular.module('app')
   .controller('GeneratorCtrl', ['$scope', '$http', function($scope, $http) {
-    $scope.outputSize = 3;
-    $scope.outputFormat = 'text';
+    $scope.options = {
+      outputSize:   3,
+      outputFormat: 'text'
+    };
     $scope.proverbs = [];
 
     $scope.randomizeSelection = function() {
@@ -38,8 +40,22 @@ angular.module('app')
     }
   });
 
-$('.skinned-select select').on('change', function() {
-  var text = $(this).find('option:selected').text();
-  $(this).siblings('.skinned-select-value').text(text);
-});
+angular.module('app')
+  .directive('skinnedSelect', function() {
+    return {
+      replace: true,
+      transclude: true,
+      template: '<span class="skinned-select" data-selection="{{selection}}" ng-transclude></span>',
+      link: function(scope, element, attributes) {
+        function getSelection() {
+          return element.find('option:selected').text();
+        }
 
+        scope.selection = getSelection();
+
+        element.find('select').on('change', function() {
+          scope.selection = getSelection();
+        });
+      }
+    };
+  });
